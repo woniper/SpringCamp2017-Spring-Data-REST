@@ -3,5 +3,5 @@
     "title" : "이것은 제목입니다.",
     "body" : "이것은 본문 내용입니다."
   },
-  "member" : "http://localhost:8080/members/1"
+  "member" : "http://localhost:8888/members/1"
 }

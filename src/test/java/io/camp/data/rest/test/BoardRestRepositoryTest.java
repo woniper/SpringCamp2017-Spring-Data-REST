@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.data.domain.Page;
 import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -44,16 +43,5 @@ public class BoardRestRepositoryTest {
         Board getBoard = boardResource.getContent();
 
         assertThat(board.getBoardId()).isEqualTo(getBoard.getBoardId());
-    }
-
-    @Test
-    public void test_게시글_리스트_조회() throws Exception {
-        ResponseEntity<Resource<Page<Resource<Board>>>> responseEntity = restTemplate.exchange(ROOT_URL,
-                HttpMethod.GET,
-                HttpEntity.EMPTY,
-                new ParameterizedTypeReference<Resource<Page<Resource<Board>>>>() {});
-
-        Resource<Page<Resource<Board>>> boards = responseEntity.getBody();
-        System.out.println(boards.getContent().getContent().size());
     }
 }
